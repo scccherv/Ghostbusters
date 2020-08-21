@@ -1,0 +1,691 @@
+@import "_null";
+// * Спецификация 
+
+$bright: #5671F6;
+$black: #363636;
+$gray: #A5A5A5;
+$back: #F3F3F3;
+$border: #d4d4d4;
+$white: #fff;
+$brhover: #6982FF;
+$yellow: #FFC700;
+
+
+@mixin text($fz,$cl,$fw,$lh) {
+    font-size: $fz;
+    color: $cl;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+// *! Отдельные независимые блоки 
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: $black;
+    background-color: $white;
+}
+.container {
+    max-width: 1130px;
+    width: 1130/1440*100%;
+    margin: auto;
+}
+.profession {
+    display: inline-block;
+    width: 100px;
+    @include text(14px,$black,700,19px)
+}
+.name {
+    @include text(14px,$black,400,19px)
+}
+.tab {
+    cursor: pointer;
+}
+
+// * Чистый CSS 
+
+// * Шапка
+.header {
+    display: flex;
+    align-items: center;
+    height: 104px;
+    border-bottom: 1px solid $border;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    background-color: $white;
+    &__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 35px 0 35px;
+        height: 100%;
+        border-right: 1px solid $border;
+    }
+
+    &__m-menu {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    &__search {
+        display: flex;
+        align-items: center;
+        margin: auto;
+        margin-left: 0;
+        padding: 0 0 0 34px;
+        max-width: 215px;
+        width: 215/1440*100%;
+        height: 100%;
+    }
+
+    &__input {
+        padding: 0 0 0 22px;
+        @include text(18px,$gray,300,21px);
+    }
+
+    &__menu {
+        max-width: 500px;
+        width: 500/1440*100%;
+        padding: 0 44px 0 0;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__link {
+        @include text(18px,$black,300,21px);
+        padding: 10px;
+        transition: .3s;
+        &:hover {
+            background-color: $bright;
+            @include text(18px,$white,300,21px);
+        }
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        max-width: 327px;
+        width: 327/1440*100%;
+        height: 100%;
+    }
+
+    &__singup {
+        width: 176px;
+        min-width: 120px;
+        height: 100%;
+        @include text(18px,$bright,400,21px);
+        background-color: $white;
+        border-left: 1px solid $border;
+        transition: .3s;
+        &:hover {
+            background-color: $border;
+        }
+    }
+
+    &__login {
+        width: 151px;
+        min-width: 120px;
+        height: 100%;
+        @include text(18px,$white,400,21px);
+        background-color: $bright;
+        transition: .3s;
+        &:hover {
+            background-color: $brhover;
+        }
+    }
+    &__autoris {
+        display: none;
+        width: 100%;
+        height: 100%;
+        @include text(18px,$white,400,21px);
+        background-color: $bright;
+        transition: .3s;
+        &:hover {
+        background-color: $brhover;
+        }
+    }
+}
+// * Шапка  
+
+// * Блок о фильме 
+.film {
+    padding: 184px 0 80px 0;
+    border-bottom: 1px solid $border;
+    &__wrapper {
+        display: flex;
+        align-items: top;
+    }
+
+    &__preview {
+        display: flex;
+        flex-direction: column;
+        max-width: 358px;
+        width: 358/1130*100%;
+    }
+
+    &__poster {
+        border-radius: 5px 5px 0 0 ;
+    }
+
+    &__play {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 75px;
+        background-color: $white;
+        border: 1px solid $border;
+        border-radius: 0 0 5px 5px;
+        @include text(16px,$bright,400,21px);
+        transition: .3s;
+        &:hover {
+            @include text(16px,$white,400,21px);
+            background-color: $bright;
+            .film__icon {
+                color: $white;
+            }
+        }
+    }
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__icon {
+        position: relative;
+        font-size: 25px;
+        color: $bright;
+        margin: 0 14px 0 0;
+    }
+
+    &__about {
+        margin: 0 0 0 60px;
+
+    }
+
+    &__rutitle {
+        @include text(36px,$black,900,42px);
+        max-width: 900px;
+        width: 900/1130*100%;
+        margin: 0 0 16px 0;
+    }
+
+    &__entitle {
+        @include text(16px,$gray,940000,21px);
+        margin: 0 0 32px 0;
+    }
+
+    &__text {
+        @include text(12px,$black,400,150%);
+        max-width: 700px;
+        width: 700/1130*100%;
+        margin: 0 0 50px 0;
+    }
+
+    &__workers {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 550px;
+    }
+
+    &__info {
+        display: block;
+        margin: 0 40px 16px 0;
+        &:last-child {
+            margin: 0 0 0 0;
+        }
+    }
+
+    &__description {
+        display: flex;
+        align-items: center;
+        margin: 80px 0 0 0;
+    }
+
+    &__counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 95px;
+        height: 95px;
+        border: 2px solid $bright;
+        border-radius: 10px;
+        @include text(26px,$bright,700,33px);
+        margin: 0 28px 0 0; 
+    }
+
+    &__rating {
+        @include text(14px,$black,700,21px);
+    }
+
+    &__point {
+        @include text(14px,$black,400,19px);
+        span {
+            @include text(14px,$black,700,21px);
+        }
+    }
+
+    &__people {
+        @include text(14px,$black,400,19px);
+        span {
+            @include text(14px,$black,700,21px);
+        }
+    }
+    &__point {
+        display: flex;
+        align-items: center;
+    }
+    &__app {
+        margin: 0 0 0 100px;
+    }
+    &__star {
+        font-size: 35px;
+        color: $gray;
+        border-right: 20px solid transparent;
+        margin: 0 0 0 -5px;
+        cursor: pointer;
+        transition: .3s;
+    }
+    &__active {
+        color: $yellow;
+    }
+}
+
+.people {
+    padding: 70px 0 65px 0;
+
+    &__title {
+        display: flex;
+        margin: 0 0 60px 0;
+    }
+
+    &__actor {
+        @include text(24px,$gray,400,28px);
+        margin-right: 30px;
+        &.people__active {
+            @include text(24px,$black,900,28px);
+        }
+    }
+
+    &__creator {
+        @include text(24px,$gray,400,28px);
+        &.people__active {
+            @include text(24px,$black,900,28px);
+        }
+    }
+
+    &__wrapper {
+        display: none;
+        visibility: hidden;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100;
+    }
+
+    &__wrapper.people__active {
+        display: flex;
+        visibility: visible;
+    }
+
+    &__card {
+        display: flex;
+        align-items: center;
+        width: 25%;
+        margin: 0 0 35px 0;
+    }
+
+    &__img {
+        margin: 0 20px 0 0;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__runame {
+        @include text(16px,$bright,700,19px);
+        margin: 0 0 6px 0;
+    }
+
+    &__ename {
+        @include text(16px,$gray,400,19px);
+    }
+}
+
+.news {
+    background-color: $back;
+    padding: 70px 0 100px 0;
+    &__title {
+        @include text(24px,$black,900,28px);
+        margin: 0 0 65px 0;
+    }
+
+    &__date {
+        @include text(14px,$black,400,16px);
+        margin: 0 0 14px 0;
+    }
+
+    &__text {
+        @include text(14px,$black,900,16px)
+    }
+}
+
+.swiper-slide {
+    background-color: $white;
+    margin: 0 30px 0 0;
+    padding: 30px 30px 30px 30px;
+    &:last-child {
+        margin: 0;
+    }
+
+}
+
+.swiper-wrapper {
+    display: flex;
+}
+
+@media (max-width: 1335px) {
+    .header {
+        &__link {
+            font-size: 16px;
+            &:hover {
+                font-size: 16px;
+            }
+        }
+        &__input {
+            font-size: 16px;
+            &:hover {
+                font-size: 16px;
+            }
+        }
+        &__singup {
+            font-size: 16px;
+            &:hover {
+                font-size: 16px;
+            }
+        }
+        &__login {
+            font-size: 16px;
+            &:hover {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .film {
+        position: relative;
+        padding-bottom: 180px;
+        &__wrapper {
+            display: flex;
+        }
+        &__preview {
+            min-width: 358px;
+            margin: auto;
+        }
+        &__star {
+            font-size: 27px;
+            }
+        &__app {
+            margin: 0 0 0 50px;
+        }
+        &__description {
+            position: absolute;
+            margin: 13% 0 0 0;
+            transform: translateX(-35%);
+        }
+    }   
+    .people {
+        &__card {
+            width: 33.333%;      
+        }
+    }
+}
+@media (max-width: 1095px) {
+    .header {
+        &__menu {
+            display: flex;
+            width: 400px;
+        }
+        &__list {
+            display: flex;
+            justify-content: end;
+        }
+        &__singup {
+            display: none;
+        }
+        &__button {
+            width: 151px;
+        }
+        &__login {
+            width: 100%;
+        }
+    }
+    .film {
+        padding-bottom: 100px;
+    }
+    .film__about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 50px 0 0 0;
+    }
+    .film__description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 11% 0 0 0;
+        transform: translateX(-40%);
+    }
+    .film__wrapper {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+    .film__description {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 80px 0 0 0;
+        position: relative;
+        transform: translateX(0);
+    }
+    .film__rutitle {
+        text-align: center;
+    }
+    .film__entitle {
+        text-align: center;
+    }
+    .film__text {
+        text-align: center;
+    }
+}
+@media (max-width: 990px) {
+    .header__input {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}
+@media (max-width: 910px) {
+    .header {
+        &__search {
+            padding: 0 0 0 16px;
+        }
+    }
+    .people {
+        &__card {
+            width: 50%;      
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    body.lock {
+        overflow: hidden;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        &__m-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            position: fixed;
+            top: -100%;
+            left: 0;
+            background-color: $bright;
+            width: 100%;
+            height: auto;
+            margin: 102px 0 0 0;
+            padding: 50px 0 50px 0;
+            transition: all 0.3s ease 0s;
+            &.active {
+                top: 0;
+                overflow: auto;
+            }
+        }
+        &__menu {
+            display: flex;
+            justify-content: center;
+            height: 196px;
+            padding: 0 0 66px 0;
+            position: relative;
+            &::before {
+                content: '';
+                background-color: $white;
+                height: 2px;
+                width: 100px;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+        &__search {
+            display: block;
+            margin: 0;
+            height: 60px;
+            width: 230px;
+            margin: 0 0 66px 0; 
+        }
+        &__input {
+            display: block;
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+        &__icon {
+            display: none;
+        }
+        &__button {
+            display: flex;
+            flex-direction: column;
+            height: 70px;
+            margin: 66px 0 0 0;
+        }
+        &__singup {
+            display: block;
+            padding: 0;
+            color: $white;
+            background-color: transparent;
+            border: none;
+        }
+        &__login {
+            display: block;
+            padding: 0;
+            color: $white;
+            background-color: transparent;
+            border: none;
+        }
+        &__list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        &__link {
+            color: $white;
+        }
+        &__burger {
+            position: relative;
+            display: block;
+            width: 30px;
+            height: 22px;
+            z-index: 3;
+            margin: 0 20px 0 0;
+            &:hover {
+                cursor: pointer;
+            }
+            &:before {
+                content: '';
+                background-color: $bright;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 2px;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+    
+            &:after {
+                content: '';
+                background-color: $bright;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 2px;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+            &.active {
+                &:before {
+                    transform: rotate(45deg);
+                    top: 10px;
+                }
+                &:after {
+                    transform: rotate(-45deg);
+                    top: 10px;
+                }
+            }
+        }
+        &__mid {
+            background-color: $bright;
+            margin: 10px 0 0 0;
+            height: 2px;
+            width: 100%;
+            border-radius: 2px;
+            &.active {
+                display: none;
+            }
+        }
+    }
+    .film__description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .film__app {
+        margin: 30px 0 0 0;
+    }
+}
+@media (max-width: 635px) {
+    .people__card {
+        width: 100%;
+    }
+    .film__workers {
+        display: flex;
+        flex-direction: column;
+    }
+    .film__left {
+        margin: 0 0 16px 0;
+    }
+}
